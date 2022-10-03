@@ -1,20 +1,21 @@
 from random import randint
 
 class Jumper:
-    """The person hiding from the Seeker. 
+    """The person with the word that needs to be guessed. 
     
-    The responsibility of Hider is to keep track of its location and distance from the seeker. 
+    The responsibility of Jumper is to keep track of the answer word, determine correct guesses, and display the jumper.
     
     Attributes:
-        _location (int): The location of the hider (1-1000).
-        _distance (List[int]): The distance from the seeker.
+        guessed: list of guessed words.
+        _answer: the answer word.
+        _fails: number of incorrect guesses.
     """
 
     def __init__(self):
         """Constructs a new Jumper.
 
         Args:
-            self (Hider): An instance of Hider.
+            self (Jumper): An instance of Jumper.
         """
         # all the possible answers
         words = ['Ball', 'Cream', 'Actor', 'Gold', 'Painting', 'Advertisement', 'Grass', 'Parrot', 'Afternoon', 
@@ -64,6 +65,11 @@ class Jumper:
         else: return False
     
     def update_words(self, guessed:list):
+        """Updates the underscores with correct letters.
+        Arguments:
+        self: an instance of Jumper
+        guessed: a list of guessed letters.
+        """
         temp_correct = []
         self.revealed_letters = "_" * len(self._answer)
         for i in range(len(self._answer)):
@@ -79,7 +85,11 @@ class Jumper:
             # ^^ this system is kind of genius if you ask me
 
     def draw_jumper(self, guessed:list):
-        """Draw the jumper text art."""
+        """Draw the jumper text art.
+        Arguments:
+        self: an instance of Jumper.
+        guessed: a list of guessed letters.
+        """
         # list of lines in jumper character
         jumper_lines = [" ___", "/___\\", "\   /", " \ /", "  0", " /|\\", " / \\"]
         

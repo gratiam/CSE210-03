@@ -15,10 +15,6 @@ class Guesser():
         self.guessed = []
        
     def update_guessed(self, letter):
-        """updates list of guessed characters.
-        
-        Returns:
-            number: The current location,
-        """
+        """Updates the list of guessed characters."""
         if letter not in self.guessed:
             self.guessed.append(letter.upper())
